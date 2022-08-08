@@ -1,18 +1,13 @@
 const { defineConfig } = require('@vue/cli-service')
-const path = require('path')
 module.exports = defineConfig({
   transpileDependencies: true,
   devServer: {
     port: 12345,
   },
-  chainWebpack: config => {
-    // config.resolve.modules.stores = new Set([path.resolve('node_modules'), 'node_modules'])
-  },
   pluginOptions: {
     electronBuilder: {
       productName: 'testapp',
       nodeIntegration: true,
-      externals: ['ffi-napi', 'ref-napi'],
       fileAssociations: {
         protocols: ['testapp'],
       },
@@ -34,8 +29,7 @@ module.exports = defineConfig({
           createDesktopShortcut: true, // 创建桌面图标
           createStartMenuShortcut: true, // 创建开始菜单
           deleteAppDataOnUninstall: true, // 卸载时清除应用数据
-          include: './public/nsis/installer.nsh', // 包含的脚本
-          guid: 'DCB00BC1-FE05-3A87-C7F4-5B0C0EA2D148', // 软件guid
+          guid: 'DCB00BC1-FE06-3A87-C7F4-5B0C0EA2D148', // 软件guid
         },
         files: ['**/*', '!src/'],
         extraResources: {
